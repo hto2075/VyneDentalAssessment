@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.time.Duration;
@@ -91,6 +92,9 @@ public class AmericanAirlinesTest {
             noUpgrade.click();
             wait.until(ExpectedConditions.titleContains(TRIP_SUMMARY));
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(FLIGHTCARD_SUMMARY)));
+            WebElement flightCard = driver.findElement(By.className(FLIGHTCARD_SUMMARY));
+            Assert.assertNotNull(flightCard);
+            System.out.println(flightCard.getText());
         } catch (Exception e) {
             System.out.println(e.getMessage()); //print out exception message
         }
